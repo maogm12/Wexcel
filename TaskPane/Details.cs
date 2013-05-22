@@ -112,8 +112,32 @@ namespace Wexcel
 
         public void ShowLogin()
         {
+            panelSetting.Visible = false;
             panelAccount.Visible = false;
             panelLogin.Visible = true;
+        }
+
+        public void ShowSetting()
+        {
+            panelSetting.Visible = true;
+        }
+
+        private void btnTimeSetting_Click(object sender, EventArgs e)
+        {
+            string timeStr = txtTimeSetting.Text;
+            int seconds = 100;
+            if (String.IsNullOrWhiteSpace(timeStr) || !int.TryParse(timeStr, out seconds))
+            {
+                Globals.ThisAddIn.t.Enabled = false;
+                MessageBox.Show("时间未设置");
+            }
+            else
+            {
+                Globals.ThisAddIn.t.Interval = seconds * 1000;
+                Globals.ThisAddIn.t.Enabled = true;
+            }
+
+            panelSetting.Visible = false;
         }
     }
 }

@@ -15,13 +15,18 @@ namespace Wexcel
     {
         public CustomTaskPane taskPane = null;
         public Details taskPaneView = null;
-        
+        public System.Timers.Timer t = new System.Timers.Timer(1000);
+
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
             taskPaneView = new Details();
             taskPane = this.CustomTaskPanes.Add(taskPaneView, "微博");
             taskPane.Width = 300;
             taskPane.Visible = false;
+
+            t.Elapsed += new System.Timers.ElapsedEventHandler(WexcelNotificate);
+            t.AutoReset = true;
+            t.Enabled = false;
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
@@ -29,6 +34,10 @@ namespace Wexcel
             Weibo.Instance.Logout();
         }
 
+        public void WexcelNotificate(object source, System.Timers.ElapsedEventArgs e)
+        {
+            MessageBox.Show("时间到了");
+        }
 
         #region VSTO generated code
 

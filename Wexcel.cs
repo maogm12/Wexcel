@@ -31,5 +31,15 @@ namespace Wexcel
                 Globals.ThisAddIn.taskPane.Visible = false;
             }
         }
+
+        private void btnSetTime_Click(object sender, RibbonControlEventArgs e)
+        {
+            if (Globals.ThisAddIn.taskPane != null)
+            {
+                Globals.ThisAddIn.taskPane.Visible = true;
+                Globals.ThisAddIn.taskPaneView.ShowSetting();
+            }
+        }
     }
 }
+

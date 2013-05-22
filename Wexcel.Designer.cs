@@ -38,12 +38,16 @@
             this.grpAccount = this.Factory.CreateRibbonGroup();
             this.btnLogin = this.Factory.CreateRibbonButton();
             this.btnLogout = this.Factory.CreateRibbonButton();
+            this.grpSetting = this.Factory.CreateRibbonGroup();
+            this.btnSetTime = this.Factory.CreateRibbonButton();
             this.tabWexcel.SuspendLayout();
             this.grpAccount.SuspendLayout();
+            this.grpSetting.SuspendLayout();
             // 
             // tabWexcel
             // 
             this.tabWexcel.Groups.Add(this.grpAccount);
+            this.tabWexcel.Groups.Add(this.grpSetting);
             this.tabWexcel.Label = "Wexcel";
             this.tabWexcel.Name = "tabWexcel";
             // 
@@ -66,6 +70,18 @@
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnLogout_Click);
             // 
+            // grpSetting
+            // 
+            this.grpSetting.Items.Add(this.btnSetTime);
+            this.grpSetting.Label = "设置";
+            this.grpSetting.Name = "grpSetting";
+            // 
+            // btnSetTime
+            // 
+            this.btnSetTime.Label = "提醒时间";
+            this.btnSetTime.Name = "btnSetTime";
+            this.btnSetTime.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnSetTime_Click);
+            // 
             // Wexcel
             // 
             this.Name = "Wexcel";
@@ -76,6 +92,8 @@
             this.tabWexcel.PerformLayout();
             this.grpAccount.ResumeLayout(false);
             this.grpAccount.PerformLayout();
+            this.grpSetting.ResumeLayout(false);
+            this.grpSetting.PerformLayout();
 
         }
 
@@ -85,6 +103,8 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpAccount;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnLogin;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnLogout;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup grpSetting;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnSetTime;
     }
 
     partial class ThisRibbonCollection
